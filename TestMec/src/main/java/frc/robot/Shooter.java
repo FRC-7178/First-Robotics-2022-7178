@@ -20,9 +20,7 @@ public class Shooter extends TimedRobot{
     private static final WPI_TalonSRX shooter = new WPI_TalonSRX(LEFT_TRIGGER);
 
 
-
-
-    //New thing ignore this
+    
 
 
 @Override
