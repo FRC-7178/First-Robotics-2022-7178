@@ -22,15 +22,14 @@ public class Shooter extends TimedRobot{
 
 
 
-    //New thing ignore this
+    
 
 
-@Override
-public void teleopPeriodic() {
+    @Override
+    public void teleopPeriodic() {
 
 
 
   
-}
-
+    }
 }
