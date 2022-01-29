@@ -22,8 +22,8 @@ public class Shooter extends TimedRobot{
 
 
 
-    
-}
+    //New thing ignore this
+
 
 @Override
 public void teleopPeriodic() {
@@ -31,4 +31,6 @@ public void teleopPeriodic() {
 
 
   
+}
+
 }
