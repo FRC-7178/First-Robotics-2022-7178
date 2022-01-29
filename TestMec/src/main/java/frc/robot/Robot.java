@@ -24,11 +24,9 @@ public class Robot extends TimedRobot {
 
 
   //The creation of the moter things for the things that shoot the things
-  //Need to add the ID's for the talon SRXs into the parentheses
-  /*
-  private static final int lowerMotor = ();
-  private static final int upperMotor = ();
-  */
+  
+  private static final int shooterMotor = (8);
+  
  
   private static final WPI_TalonSRX frontLeft = new WPI_TalonSRX(kFrontLeftChannel);
   private static final WPI_TalonSRX rearLeft = new WPI_TalonSRX(kRearLeftChannel);
@@ -44,12 +42,12 @@ public class Robot extends TimedRobot {
   private MecanumDrive m_robotDrive;
   private XboxController m_stick;
  
-  //Same thing but like this code above it, configure the Talon things
+  //Same thing but like this code above it, configure the Talon things, I will map this to a trigger
 
-  /*
-  private static final WPI_TalonSRX lowerMotor = new WPI_TalonSRX(lowerMotor);
-  private static final WPI_TalonSRX upperMotor = new WPI_TalonSRX(upperMotor);
-  */
+  
+  private static final WPI_TalonSRX shooterMotor = new WPI_TalonSRX(shooterMotor);
+
+  private static final int kTriggerChannel;
 
   @Override
   public void robotInit() {
@@ -79,19 +77,14 @@ public class Robot extends TimedRobot {
     //The .getLeftY() is inverted so that the front of the robot actually goes forwards when the stick is moved forwards
     m_robotDrive.driveCartesian( (-1)* m_stick.getLeftY(), m_stick.getLeftX(), m_stick.getRightX(), 0.0);
   }
-  int abc = 56;
 
   //skeleton code for the shooter thingy
-  int moterNumberA;
-  int moterNumberB;
-  int moternumberC;
-  int moterNumberD;
 
+  // = new XboxController();
   
 
 
 }
 
-//This is the skeleton for the thingy that shoots the baseballs
 
 
