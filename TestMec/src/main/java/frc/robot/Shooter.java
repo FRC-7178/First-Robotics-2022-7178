@@ -20,15 +20,19 @@ public class Shooter extends TimedRobot{
     private static final WPI_TalonSRX shooter = new WPI_TalonSRX(LEFT_TRIGGER);
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 518bdc03496c674caeba56230512f8d67a7dc8ec
     
 
 
-@Override
-public void teleopPeriodic() {
+    @Override
+    public void teleopPeriodic() {
 
 
 
   
-}
-
+    }
 }

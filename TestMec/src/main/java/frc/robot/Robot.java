@@ -22,7 +22,8 @@ public class Robot extends TimedRobot {
   private static final int kRearRightChannel = (2);
   private static final int kRearRightChannelB = (7);
 
-
+  
+  
   
  
   private static final WPI_TalonSRX frontLeft = new WPI_TalonSRX(kFrontLeftChannel);
@@ -39,6 +40,9 @@ public class Robot extends TimedRobot {
   private MecanumDrive m_robotDrive;
   private XboxController m_stick;
  
+
+  
+
   @Override
   public void robotInit() {
  
