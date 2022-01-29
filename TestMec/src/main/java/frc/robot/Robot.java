@@ -21,6 +21,14 @@ public class Robot extends TimedRobot {
   private static final int kFrontRightChannelB = (6);
   private static final int kRearRightChannel = (2);
   private static final int kRearRightChannelB = (7);
+
+
+  //The creation of the moter things for the things that shoot the things
+  //Need to add the ID's for the talon SRXs into the parentheses
+  /*
+  private static final int lowerMotor = ();
+  private static final int upperMotor = ();
+  */
  
   private static final WPI_TalonSRX frontLeft = new WPI_TalonSRX(kFrontLeftChannel);
   private static final WPI_TalonSRX rearLeft = new WPI_TalonSRX(kRearLeftChannel);
@@ -36,6 +44,13 @@ public class Robot extends TimedRobot {
   private MecanumDrive m_robotDrive;
   private XboxController m_stick;
  
+  //Same thing but like this code above it, configure the Talon things
+
+  /*
+  private static final WPI_TalonSRX lowerMotor = new WPI_TalonSRX(lowerMotor);
+  private static final WPI_TalonSRX upperMotor = new WPI_TalonSRX(upperMotor);
+  */
+
   @Override
   public void robotInit() {
  
@@ -76,5 +91,7 @@ public class Robot extends TimedRobot {
 
 
 }
+
+//This is the skeleton for the thingy that shoots the baseballs
 
 
