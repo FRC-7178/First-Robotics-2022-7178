@@ -23,9 +23,6 @@ public class Robot extends TimedRobot {
   private static final int kRearRightChannelB = (7);
 
 
-  //The creation of the moter things for the things that shoot the things
-  
-  private static final int shooterMotor = (8);
   
  
   private static final WPI_TalonSRX frontLeft = new WPI_TalonSRX(kFrontLeftChannel);
@@ -42,13 +39,6 @@ public class Robot extends TimedRobot {
   private MecanumDrive m_robotDrive;
   private XboxController m_stick;
  
-  //Same thing but like this code above it, configure the Talon things, I will map this to a trigger
-
-  
-  private static final WPI_TalonSRX shooterMotor = new WPI_TalonSRX(shooterMotor);
-
-  private static final int kTriggerChannel;
-
   @Override
   public void robotInit() {
  
@@ -78,9 +68,6 @@ public class Robot extends TimedRobot {
     m_robotDrive.driveCartesian( (-1)* m_stick.getLeftY(), m_stick.getLeftX(), m_stick.getRightX(), 0.0);
   }
 
-  //skeleton code for the shooter thingy
-
-  // = new XboxController();
   
 
 
