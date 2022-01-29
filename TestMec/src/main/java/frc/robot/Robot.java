@@ -64,6 +64,7 @@ public class Robot extends TimedRobot {
     //The .getLeftY() is inverted so that the front of the robot actually goes forwards when the stick is moved forwards
     m_robotDrive.driveCartesian( (-1)* m_stick.getLeftY(), m_stick.getLeftX(), m_stick.getRightX(), 0.0);
   }
+  int a = 4;
 }
  
 
