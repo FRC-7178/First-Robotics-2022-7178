@@ -10,13 +10,13 @@ import edu.wpi.first.wpilibj.TimedRobot;
 
 public class Shooter extends TimedRobot {
 
-  TalonSRX _talon0 = new TalonSRX(8);
+  TalonSRX talon8 = new TalonSRX(8);
   Joystick _joystick = new Joystick(8);
 
   @Override
   public void teleopPeriodic(){
     double stick = _joystick.getRawAxis(1);
-    _talon0.set(ControlMode.PercentOutput, stick);
+    talon8.set(ControlMode.PercentOutput, stick);
   }
 
 }
