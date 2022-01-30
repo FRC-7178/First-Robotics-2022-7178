@@ -1,41 +1,22 @@
+//Origional code source at docs.ctre-phoenix.com/en/stable/ch13_MC.html
+
 package frc.robot;
 
-//Imports stuff, I need this please dont telslaew 
- 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
- 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
+public class Shooter extends TimedRobot {
 
+  TalonSRX _talon0 = new TalonSRX(8);
+  Joystick _joystick = new Joystick(8);
 
+  @Override
+  public void teleopPeriodic(){
+    double stick = _joystick.getRawAxis(1);
+    _talon0.set(ControlMode.PercentOutput, stick);
+  }
 
-
-
-public class Shooter extends TimedRobot{
-
-    private MecanumDrive m_robotDrive;
-      private XboxController m_stick;
-
-
-
-    private static final int kSideChannel = (8);
-
-    private static final WPI_TalonSRX shooter = new WPI_TalonSRX(kSideChannel);
-
-    m_robotDrive = new MecanumDrive(shooter);
-
-    private static final int kJoystickChannel = 0;
-
-
-    @Override
-    public void teleopPeriodic() {
-
-
-
-        m_robotDrive.driveCartesian( (-1)* m_stick.getLeftY(), m_stick.getLeftX(), m_stick.getRightX(), 0.0);
-    }
 }
-
