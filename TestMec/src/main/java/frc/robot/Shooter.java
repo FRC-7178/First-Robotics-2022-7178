@@ -15,17 +15,19 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
 
 public class Shooter extends TimedRobot{
-    private static final int LEFT_TRIGGER = (8);
 
-    private static final WPI_TalonSRX shooter = new WPI_TalonSRX(LEFT_TRIGGER);
-
-
-<<<<<<< HEAD
-=======
+    private MecanumDrive m_robotDrive;
+      private XboxController m_stick;
 
 
->>>>>>> 518bdc03496c674caeba56230512f8d67a7dc8ec
-    
+
+    private static final int kSideChannel = (8);
+
+    private static final WPI_TalonSRX shooter = new WPI_TalonSRX(kSideChannel);
+
+    m_robotDrive = new MecanumDrive(shooter);
+
+    private static final int kJoystickChannel = 0;
 
 
     @Override
@@ -33,6 +35,7 @@ public class Shooter extends TimedRobot{
 
 
 
-  
+        m_robotDrive.driveCartesian( (-1)* m_stick.getLeftY(), m_stick.getLeftX(), m_stick.getRightX(), 0.0);
     }
 }
+
