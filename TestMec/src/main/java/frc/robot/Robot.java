@@ -21,8 +21,6 @@ public class Robot extends TimedRobot {
   private static final int kFrontRightChannelB = (6);
   private static final int kRearRightChannel = (2);
   private static final int kRearRightChannelB = (7);
-<<<<<<< Updated upstream
-=======
   private static final int kA = (8);
   private static final int kB = (9);
   private static final int dontfollowkB = (10);
@@ -31,7 +29,6 @@ public class Robot extends TimedRobot {
   
   
   
->>>>>>> Stashed changes
  
   private static final WPI_TalonSRX frontLeft = new WPI_TalonSRX(kFrontLeftChannel);
   private static final WPI_TalonSRX rearLeft = new WPI_TalonSRX(kRearLeftChannel);
@@ -92,8 +89,8 @@ public class Robot extends TimedRobot {
       //RUUUUUUUUUUUUN HELP
       
       //astil cals both intake moters with their own
-      intakeHappy.set(0.25);
-      dontfollowIntakeHappy.set(0.25);
+      intakeHappy.set(0.50);
+      dontfollowIntakeHappy.set(0.50);
 
     }else{
       //??? so cunfusased
