@@ -6,7 +6,7 @@ package frc.robot;
  
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
  
-import edu.wpi.first.wpilibj.Joystick;
+//import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
@@ -21,6 +21,17 @@ public class Robot extends TimedRobot {
   private static final int kFrontRightChannelB = (6);
   private static final int kRearRightChannel = (2);
   private static final int kRearRightChannelB = (7);
+<<<<<<< Updated upstream
+=======
+  private static final int kA = (8);
+  private static final int kB = (9);
+  private static final int dontfollowkB = (10);
+    
+
+  
+  
+  
+>>>>>>> Stashed changes
  
   private static final WPI_TalonSRX frontLeft = new WPI_TalonSRX(kFrontLeftChannel);
   private static final WPI_TalonSRX rearLeft = new WPI_TalonSRX(kRearLeftChannel);
@@ -30,7 +41,11 @@ public class Robot extends TimedRobot {
   private static final WPI_TalonSRX rearLeftB = new WPI_TalonSRX(kRearLeftChannelB);
   private static final WPI_TalonSRX frontRightB = new WPI_TalonSRX(kFrontRightChannelB);
   private static final WPI_TalonSRX rearRightB = new WPI_TalonSRX(kRearRightChannelB);
- 
+  private static final WPI_TalonSRX shooterHappy = new WPI_TalonSRX(kA);
+  private static final WPI_TalonSRX intakeHappy = new WPI_TalonSRX(kB);
+  private static final WPI_TalonSRX dontfollowIntakeHappy = new WPI_TalonSRX(dontfollowkB);
+  
+  
   private static final int kJoystickChannel = 0;
  
   private MecanumDrive m_robotDrive;
@@ -49,6 +64,7 @@ public class Robot extends TimedRobot {
     rearRight.setInverted(true);
     frontRightB.setInverted(true);
     rearRightB.setInverted(true);
+    shooterHappy.setInverted(true);
  
     m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
  
@@ -63,6 +79,30 @@ public class Robot extends TimedRobot {
 
     //The .getLeftY() is inverted so that the front of the robot actually goes forwards when the stick is moved forwards
     m_robotDrive.driveCartesian( (-1)* m_stick.getLeftY(), m_stick.getLeftX(), m_stick.getRightX(), 0.0);
+   
+    //for de shooter
+    if(m_stick.getAButton()){
+      shooterHappy.set(1);
+    }else{
+      shooterHappy.set(0);
+    }
+
+    //for de intake
+    if(m_stick.getBButton()){
+      //RUUUUUUUUUUUUN HELP
+      
+      //astil cals both intake moters with their own
+      intakeHappy.set(0.25);
+      dontfollowIntakeHappy.set(0.25);
+
+    }else{
+      //??? so cunfusased
+
+      intakeHappy.set(0);
+      dontfollowIntakeHappy.set(0);
+    }
+
+
   }
 }
  
