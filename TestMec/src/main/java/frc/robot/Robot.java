@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
  
 /** This is a demo program showing how to use Mecanum control with the MecanumDrive class. */
 public class Robot extends TimedRobot {
+
+  boolean Ocupid = false;
+
   private static final int kFrontLeftChannel = (0);
   private static final int kFrontLeftChannelB = (3);
   private static final int kRearLeftChannel = (4);
@@ -24,6 +27,7 @@ public class Robot extends TimedRobot {
   private static final int kA = (8);
   private static final int kB = (9);
   private static final int dontfollowkB = (10);
+  private static final int theOtherOneIGuess = (11);
     
 
   
@@ -41,7 +45,7 @@ public class Robot extends TimedRobot {
   private static final WPI_TalonSRX shooterHappy = new WPI_TalonSRX(kA);
   private static final WPI_TalonSRX intakeHappy = new WPI_TalonSRX(kB);
   private static final WPI_TalonSRX dontfollowIntakeHappy = new WPI_TalonSRX(dontfollowkB);
-  
+  private static final WPI_TalonSRX AAAAAAAAAA = new WPI_TalonSRX(theOtherOneIGuess);
   
   private static final int kJoystickChannel = 0;
  
@@ -75,13 +79,26 @@ public class Robot extends TimedRobot {
 
 
     //The .getLeftY() is inverted so that the front of the robot actually goes forwards when the stick is moved forwards
-    m_robotDrive.driveCartesian( (-1)* m_stick.getLeftY(), m_stick.getLeftX(), m_stick.getRightX(), 0.0);
+    m_robotDrive.driveCartesian( m_stick.getLeftY(), (-1)* m_stick.getLeftX(), m_stick.getRightX(), 0.0);
    
     //for de shooter
     if(m_stick.getAButton()){
       shooterHappy.set(1);
-    }else{
+      AAAAAAAAAA.set(0.25);
+      Ocupid = true;
+    }
+
+    if(m_stick.getXButton()){
+      //RUUUUUUUUUUUUN HELP
+      //astil cals both intake moters with their own
+      shooterHappy.set(1);
+      AAAAAAAAAA.set(1);
+      Ocupid = true;
+    }
+
+    if((m_stick.getXButton() == false) && (m_stick.getAButton() == false)){
       shooterHappy.set(0);
+      AAAAAAAAAA.set(0);
     }
 
     //for de intake
@@ -89,8 +106,8 @@ public class Robot extends TimedRobot {
       //RUUUUUUUUUUUUN HELP
       
       //astil cals both intake moters with their own
-      intakeHappy.set(0.50);
-      dontfollowIntakeHappy.set(0.50);
+      intakeHappy.set(0.5);
+      dontfollowIntakeHappy.set(0.5);
 
     }else{
       //??? so cunfusased
@@ -99,6 +116,10 @@ public class Robot extends TimedRobot {
       dontfollowIntakeHappy.set(0);
     }
 
+    //overpowered shooter, do not press this button unless you are on a basketball court
+
+    
+    //Ocupid = false;
 
   }
 }
