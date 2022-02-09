@@ -4,6 +4,7 @@
  
 package frc.robot;
  
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
  
 //import edu.wpi.first.wpilibj.Joystick;
@@ -24,16 +25,21 @@ public class Robot extends TimedRobot {
   private static final int kFrontRightChannelB = (6);
   private static final int kRearRightChannel = (2);
   private static final int kRearRightChannelB = (7);
-  private static final int kA = (8);
-  private static final int kB = (9);
-  private static final int dontfollowkB = (10);
-  private static final int theOtherOneIGuess = (11);
+  private static final int kA = (9);
+  private static final int kB = (8);
+  private static final int dontfollowkB = (11);
+  private static final int theOtherOneIGuess = (10);
+
+  //new shooter vars
+
+private static final int shooter1Happy = (13);
+private static final int shooter1Happier = (14);
     
 
   
   
   
- 
+  //Movement vars
   private static final WPI_TalonSRX frontLeft = new WPI_TalonSRX(kFrontLeftChannel);
   private static final WPI_TalonSRX rearLeft = new WPI_TalonSRX(kRearLeftChannel);
   private static final WPI_TalonSRX frontRight = new WPI_TalonSRX(kFrontRightChannel);
@@ -42,11 +48,18 @@ public class Robot extends TimedRobot {
   private static final WPI_TalonSRX rearLeftB = new WPI_TalonSRX(kRearLeftChannelB);
   private static final WPI_TalonSRX frontRightB = new WPI_TalonSRX(kFrontRightChannelB);
   private static final WPI_TalonSRX rearRightB = new WPI_TalonSRX(kRearRightChannelB);
-  private static final WPI_TalonSRX shooterHappy = new WPI_TalonSRX(kA);
+  //intake vars
   private static final WPI_TalonSRX intakeHappy = new WPI_TalonSRX(kB);
   private static final WPI_TalonSRX dontfollowIntakeHappy = new WPI_TalonSRX(dontfollowkB);
-  private static final WPI_TalonSRX AAAAAAAAAA = new WPI_TalonSRX(theOtherOneIGuess);
-  
+  //shooter vars
+  private static final WPI_TalonFX conveyorBeltHappy = new WPI_TalonFX(kA);
+  private static final WPI_TalonFX bottomShooterHappy = new WPI_TalonFX(theOtherOneIGuess);
+
+  //new shooter vars
+  private static final WPI_TalonFX firstShooterSadMaybe = new WPI_TalonFX(shooter1Happy);
+  private static final WPI_TalonFX firstShooterSadMaybeNot = new WPI_TalonFX(shooter1Happier);
+
+
   private static final int kJoystickChannel = 0;
  
   private MecanumDrive m_robotDrive;
@@ -65,7 +78,8 @@ public class Robot extends TimedRobot {
     rearRight.setInverted(true);
     frontRightB.setInverted(true);
     rearRightB.setInverted(true);
-    shooterHappy.setInverted(true);
+    conveyorBeltHappy.setInverted(true);
+
  
     m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
  
@@ -81,25 +95,35 @@ public class Robot extends TimedRobot {
     //The .getLeftY() is inverted so that the front of the robot actually goes forwards when the stick is moved forwards
     m_robotDrive.driveCartesian( m_stick.getLeftY(), (-1)* m_stick.getLeftX(), m_stick.getRightX(), 0.0);
    
+
+      //For the conveyor belt
+      // if(m_stick.getYButton()){
+      //   firstShooterSadMaybe.set(1);
+      // }else{
+      //   firstShooterSadMaybe.set(0);
+      // }
+
+
+
     //for de shooter
     if(m_stick.getAButton()){
-      shooterHappy.set(1);
-      AAAAAAAAAA.set(0.25);
-      Ocupid = true;
+      conveyorBeltHappy.set(1);
+      firstShooterSadMaybe.set(-0.4);
+      //firstShooterSadMaybe.set(1);
+      firstShooterSadMaybeNot.set(0.6);
+      bottomShooterHappy.set(0.8);
+      
+    }else{
+      firstShooterSadMaybe.set(0);
+      conveyorBeltHappy.set(0);
+      //firstShooterSadMaybe.set(0);
+      firstShooterSadMaybeNot.set(0);
+      bottomShooterHappy.set(0);
     }
 
-    if(m_stick.getXButton()){
-      //RUUUUUUUUUUUUN HELP
-      //astil cals both intake moters with their own
-      shooterHappy.set(1);
-      AAAAAAAAAA.set(1);
-      Ocupid = true;
-    }
 
-    if((m_stick.getXButton() == false) && (m_stick.getAButton() == false)){
-      shooterHappy.set(0);
-      AAAAAAAAAA.set(0);
-    }
+
+
 
     //for de intake
     if(m_stick.getBButton()){
@@ -115,11 +139,8 @@ public class Robot extends TimedRobot {
       intakeHappy.set(0);
       dontfollowIntakeHappy.set(0);
     }
-
-    //overpowered shooter, do not press this button unless you are on a basketball court
-
     
-    //Ocupid = false;
+
 
   }
 }
