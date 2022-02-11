@@ -6,8 +6,7 @@ package frc.robot;
  
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import java.util.Scanner;
-
+ 
 //import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
@@ -37,8 +36,7 @@ private static final int shooter1Happy = (13);
 private static final int shooter1Happier = (14);
     
 
-  //Allows for continuous user input for motors
-  double poop;  
+  
   
   
   //Movement vars
@@ -113,7 +111,7 @@ private static final int shooter1Happier = (14);
       firstShooterSadMaybe.set(-0.4);
       //firstShooterSadMaybe.set(1);
       firstShooterSadMaybeNot.set(0.6);
-      bottomShooterHappy.set(poop); //The origional value was 0.8
+      bottomShooterHappy.set(0.8);
       
     }else{
       firstShooterSadMaybe.set(0);
@@ -148,9 +146,7 @@ private static final int shooter1Happier = (14);
 
 
 
-    //Gets user input to change shooter power
-    Scanner updateVariables = new Scanner(System.in);
-    poop = updateVariables.nextDouble();
+
 
 
 
