@@ -6,7 +6,7 @@ package frc.robot;
  
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
- 
+
 //import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
@@ -36,7 +36,7 @@ private static final int shooter1Happy = (13);
 private static final int shooter1Happier = (14);
     
 
-  
+
   
   
   //Movement vars
@@ -86,6 +86,16 @@ private static final int shooter1Happier = (14);
     m_stick = new XboxController(kJoystickChannel);
   }
  
+
+
+
+
+
+
+
+
+
+  //the teleop things because I need space here
   @Override
   public void teleopPeriodic() {
     // Use the joystick X axis for lateral movement, Y axis for forward
@@ -102,8 +112,6 @@ private static final int shooter1Happier = (14);
       // }else{
       //   firstShooterSadMaybe.set(0);
       // }
-
-
 
     //for de shooter
     if(m_stick.getAButton()){
@@ -140,8 +148,6 @@ private static final int shooter1Happier = (14);
       dontfollowIntakeHappy.set(0);
     }
     
-
-
 
 
 
