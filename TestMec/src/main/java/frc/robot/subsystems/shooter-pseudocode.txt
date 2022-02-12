@@ -1,0 +1,29 @@
+package and import things
+
+public class shooter {
+    create private (talon) motors, assign talons, etc etc
+    create constants for speeds and stuff
+
+    void shoot() {
+        start motors and wait for them to get to wanted RPM
+        activate index and indexAssist to shoot first ball, then keep them activated until the sensor detects a ball again
+        wait for motors to get back to wanted RPM
+        start index and indexAssist again to shoot second ball
+        repeat
+
+        
+
+        speed motors up -> shoot first ball -> send up second ball -> wait for motors to get back up -> shoot second ball
+    }
+
+    void stopMotor() {
+        stop the motor, let it slow down on its own
+    }
+
+    double getMotorSpeed(specific motor) {
+        get and return the motor speed
+    }
+}
+
+
+shooter names- frontShooter, backShooter
